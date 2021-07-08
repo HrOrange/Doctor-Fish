@@ -11,21 +11,19 @@ public class bullet : MonoBehaviour
     public float survival_time = 20.0f;
     
     public Transform center;
-    public Transform circle;
 
     void Start()
     {
-        circle.localScale = new Vector3(circle.localScale.x * range, circle.localScale.y * range, circle.localScale.z);
-
         rig = GetComponent<Rigidbody2D>();
         
         if (transform.rotation.z > 0.5f || transform.rotation.z < -0.5f) transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+        rig.AddForce(transform.right * m_Speed);
     }
 
 
     void Update()
     {
-        rig.MovePosition(transform.position + transform.right * Time.deltaTime * m_Speed);
+        //rig.MovePosition(transform.position + transform.right * Time.deltaTime * m_Speed);
         survival_time -= Time.deltaTime;
         if (survival_time <= 0) Destroy(gameObject);
     }
@@ -41,6 +39,6 @@ public class bullet : MonoBehaviour
         }
         Instantiate(Particle, transform.position, Quaternion.identity);
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

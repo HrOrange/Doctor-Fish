@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Speed: 40
   Particle: {fileID: 829818800232397831, guid: 18e559db1954d7448bf7dc54be68ea61, type: 3}
   range: 15
+  survival_time: 20
   center: {fileID: 6670481692566941627}
   circle: {fileID: 7731073142727422289}
 --- !u!50 &307643729615533174
@@ -157,7 +158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7731073142727422289
 Transform:
   m_ObjectHideFlags: 0
