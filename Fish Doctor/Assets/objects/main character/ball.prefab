@@ -126,9 +126,9 @@ GameObject:
   - component: {fileID: 4396253483679239195}
   - component: {fileID: 1947750006069285028}
   - component: {fileID: 2711916305591713577}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,10 +265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1875fdc05b237f7458a9cd3f55c2bd9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 2500
+  m_Speed: 2200
   Particle: {fileID: 829818800232397831, guid: 18e559db1954d7448bf7dc54be68ea61, type: 3}
-  range: 5
-  survival_time: 20
+  range: 30
   center: {fileID: 5801002782628194453}
   range_circle: {fileID: 3193878289567745751}
   my_speed: 0

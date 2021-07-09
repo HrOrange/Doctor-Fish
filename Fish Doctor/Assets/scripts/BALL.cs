@@ -8,11 +8,12 @@ public class BALL : MonoBehaviour
     public float m_Speed = 2500.0f;
     public GameObject Particle;
     public float range = 5.0f;
-    public float survival_time = 20.0f;
 
     public Transform center;
     public Transform range_circle;
     public float my_speed;
+
+    bool SWITCH;
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class BALL : MonoBehaviour
 
         rig.AddRelativeForce(transform.right * m_Speed);
 
-        range_circle.localScale = new Vector3(range, range, 1);
+        range_circle.localScale = new Vector3(range / transform.localScale.x, range / transform.localScale.y, 1);
     }
 
     void FixedUpdate()
@@ -30,8 +31,10 @@ public class BALL : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Player")
+        if(col.gameObject.tag == "Player" && !SWITCH)
         {
+            SWITCH = true;
+            Debug.Log("YEAH");
             foreach (GameObject ob in GameObject.FindGameObjectsWithTag("Enemy"))
             {
                 if (Vector3.Distance(ob.transform.position, center.position) <= range)
@@ -46,5 +49,12 @@ public class BALL : MonoBehaviour
         }
 
         //Destroy(gameObject);
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player" && SWITCH)
+        {
+            SWITCH = false;
+        }
     }
 }
