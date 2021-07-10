@@ -60,9 +60,10 @@
     <Compile Include="Assets\scripts\enemy_spawner.cs" />
     <Compile Include="Assets\scripts\RPG.cs" />
     <Compile Include="Assets\scripts\look_at_mouse.cs" />
+    <Compile Include="Assets\scripts\AudioManager.cs" />
     <Compile Include="Assets\scripts\die_after_time.cs" />
     <Compile Include="Assets\scripts\enemy.cs" />
-    <Compile Include="Assets\scripts\AudioManager.cs" />
+    <Compile Include="Assets\scripts\treasure_script.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

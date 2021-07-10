@@ -5,7 +5,7 @@ using UnityEngine;
 public class BALL : MonoBehaviour
 {
     Rigidbody2D rig;
-    public float m_Speed = 2500.0f;
+    public float m_Speed = 40.0f;
     public GameObject Particle;
     public float range = 5.0f;
 
@@ -19,7 +19,9 @@ public class BALL : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
 
-        rig.AddRelativeForce(transform.right * m_Speed);
+        //rig.AddRelativeForce(transform.right * m_Speed);
+        float r = Mathf.Deg2Rad * Random.Range(0, 359);
+        rig.velocity = new Vector2(Mathf.Cos(r) * m_Speed, Mathf.Sin(r) * m_Speed);
 
         range_circle.localScale = new Vector3(range / transform.localScale.x, range / transform.localScale.y, 1);
     }
@@ -44,7 +46,7 @@ public class BALL : MonoBehaviour
             }
             Instantiate(Particle, transform.position, Quaternion.identity);
 
-            Vector3 dir = Vector3.Normalize(col.gameObject.transform.root.position - center.position) * -1 * range;
+            Vector3 dir = Vector3.Normalize(col.gameObject.transform.root.position - center.position) * -1 * m_Speed;
             rig.velocity = new Vector3(dir.x, dir.y, 0);
         }
 

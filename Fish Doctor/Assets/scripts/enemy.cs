@@ -9,6 +9,7 @@ public class enemy : MonoBehaviour
     Rigidbody2D m_Rigidbody;
 
     bool right = true;
+    public bool boss;
 
     void Start()
     {
@@ -37,8 +38,21 @@ public class enemy : MonoBehaviour
         m_Rigidbody.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Hello there");
+        if (col.gameObject.transform.root.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+
+            if (boss)
+            {
+                col.gameObject.transform.root.GetComponent<move>().life = 0;
+                FindObjectOfType<enemy_spawner>().spawn_next_boss();
+            }
+            else
+            {
+                col.gameObject.transform.root.GetComponent<move>().life--;
+            }
+        }
     }
 }
